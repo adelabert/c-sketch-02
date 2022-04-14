@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<canvas width="600" height="600"></canvas>
+		<script>
+			let canvas = document.querySelector("canvas");
+			let context = canvas.getContext("2d");
+
+			// rect but quick way
+			// context.fillStyle = "pink";
+			// context.fillRect(100, 100, 400, 400);
+
+			// rect
+			// context.beginPath();
+			// context.lineWidth = 4;
+			// context.rect(100, 100, 400, 400);
+			// context.stroke();
+
+			// circle
+			// context.beginPath();
+			// context.arc(300, 300, 100, 0, Math.PI * 2);
+			// context.stroke();
+
+			// scene
+			const w = 60;
+			const h = 60;
+			const gap = 20;
+			const inGap = 8;
+			let x;
+			let y;
+			context.lineWidth = 2;
+
+			for (let i = 0; i < 5; i++) {
+				for (let j = 0; j < 5; j++) {
+					x = 100 + (w + gap) * i;
+					y = 100 + (h + gap) * j;
+
+					context.beginPath();
+					context.rect(x, y, w, h);
+					context.stroke();
+
+					if (Math.random() > 0.5) {
+						context.beginPath();
+						context.rect(x + inGap, y + inGap, w - inGap * 2, h - inGap * 2);
+						context.stroke();
+					}
+				}
+			}
+		</script>
+	</body>
+</html>
